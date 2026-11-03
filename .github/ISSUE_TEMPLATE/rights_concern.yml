@@ -1,0 +1,35 @@
+name: Rights concern / takedown request
+description: Contact the maintainer about data access, game modification, copyright or other rights concerns.
+title: "[Rights] "
+body:
+  - type: markdown
+    attributes:
+      value: "We will prioritize pausing affected distribution or functionality while reviewing a rights concern and promptly remove or correct the affected material as appropriate. This is a voluntary contact channel, not a promise of immunity or a replacement for formal legal notices. This issue is public: do not upload game files, personal addresses, credentials, confidential evidence or private contact details."
+  - type: input
+    id: capacity
+    attributes:
+      label: Rights holder or representative
+      description: State the organization and your role without disclosing confidential personal information.
+    validations:
+      required: true
+  - type: textarea
+    id: affected_material
+    attributes:
+      label: Affected material or functionality
+      description: Identify the repository path, release version, URL or application feature.
+    validations:
+      required: true
+  - type: textarea
+    id: concern
+    attributes:
+      label: Rights or terms concerned
+      description: Explain the concern and link to publicly available supporting terms or rights information.
+    validations:
+      required: true
+  - type: textarea
+    id: requested_action
+    attributes:
+      label: Requested action
+      description: For example, pause distribution, disable data access, remove material or correct attribution.
+    validations:
+      required: true

@@ -1,0 +1,39 @@
+name: Bug report
+description: Report a reproducible problem in the supported Windows utility.
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: "Supported target: NBA 2K27, Windows x64, quick play. Do not attach game/roster files, account identifiers, private paths or share credentials. Review diagnostics before posting."
+  - type: input
+    id: version
+    attributes:
+      label: Utility version
+      placeholder: 1.0.0-rc5
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Windows version
+      options:
+        - Windows 11 x64
+        - Windows 10 x64
+  - type: dropdown
+    id: launch
+    attributes:
+      label: Launch mode
+      options:
+        - Steam
+        - Direct EXE
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps, expected result and actual result
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Reviewed diagnostic summary or error text
+      description: Paste reviewed diagnostic export or error text. Exclude private information and proprietary game data.

@@ -1,0 +1,9 @@
+{
+  "id": "nba2k27-rdat-v9",
+  "name": "NBA 2K27 / native unencrypted SYNC RDAT v9",
+  "format": "sync-rdat-v9",
+  "record_bits": {"PlayerData": 9721, "TeamData": 43433, "FreeAgentData": 64016},
+  "roster_path": "roster/roster.iff",
+  "verified_scope": "NBA 2K27 Windows x64 quick play, unencrypted native SYNC only. Steam discovery/launch implemented; Steam in-game adoption unverified. Other game editions unsupported.",
+  "team_names": ["76ers", "Bucks", "Bulls", "Cavaliers", "Celtics", "Clippers", "Grizzlies", "Hawks", "Heat", "Hornets", "Jazz", "Kings", "Knicks", "Lakers", "Magic", "Mavericks", "Nets", "Nuggets", "Pacers", "Pelicans", "Pistons", "Raptors", "Rockets", "Spurs", "Suns", "Thunder", "Timberwolves", "Trail Blazers", "Warriors", "Wizards"]
+}

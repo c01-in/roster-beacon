@@ -1,0 +1,16 @@
+name: Feature request
+description: Explain a user problem and desired behavior.
+title: "[Feature] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: User problem and proposed behavior
+      description: Current support is NBA 2K27 Windows x64 quick play. Identify requests outside this scope explicitly.
+    validations:
+      required: true
+  - type: textarea
+    id: rights
+    attributes:
+      label: Data, format or dependency basis
+      description: Link public documentation and permissions where relevant. Exclude game assets and proprietary rosters.

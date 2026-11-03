@@ -1,0 +1,23 @@
+{
+  "language": "auto",
+  "game_executable": "",
+  "launch_mode": "steam",
+  "steam_app_id": "",
+  "sync_directory": "",
+  "manifest_name": "",
+  "roster_path": "roster/roster.iff",
+  "data_directory": "",
+  "cache_directory": "",
+  "baseline_directory": "",
+  "compatibility_profile": "nba2k27-rdat-v9",
+  "team_map_file": "",
+  "injury_types_file": "",
+  "allow_missing_players": true,
+  "scope": "NBA_ALL_30_TEAMS",
+  "show_schedule": true,
+  "schedule_team_id": "13",
+  "api_base": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba",
+  "season_year": 0,
+  "request_timeout": 30,
+  "network_workers": 6
+}

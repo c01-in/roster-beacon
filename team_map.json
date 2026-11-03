@@ -1,0 +1,182 @@
+[
+  {
+    "index": 0,
+    "name": "Philadelphia 76ers",
+    "abbreviation": "PHI",
+    "roster_type": 0
+  },
+  {
+    "index": 1,
+    "name": "Milwaukee Bucks",
+    "abbreviation": "MIL",
+    "roster_type": 0
+  },
+  {
+    "index": 2,
+    "name": "Chicago Bulls",
+    "abbreviation": "CHI",
+    "roster_type": 0
+  },
+  {
+    "index": 3,
+    "name": "Cleveland Cavaliers",
+    "abbreviation": "CLE",
+    "roster_type": 0
+  },
+  {
+    "index": 4,
+    "name": "Boston Celtics",
+    "abbreviation": "BOS",
+    "roster_type": 0
+  },
+  {
+    "index": 5,
+    "name": "Los Angeles Clippers",
+    "abbreviation": "LAC",
+    "roster_type": 0
+  },
+  {
+    "index": 6,
+    "name": "Memphis Grizzlies",
+    "abbreviation": "MEM",
+    "roster_type": 0
+  },
+  {
+    "index": 7,
+    "name": "Atlanta Hawks",
+    "abbreviation": "ATL",
+    "roster_type": 0
+  },
+  {
+    "index": 8,
+    "name": "Miami Heat",
+    "abbreviation": "MIA",
+    "roster_type": 0
+  },
+  {
+    "index": 9,
+    "name": "Charlotte Hornets",
+    "abbreviation": "CHA",
+    "roster_type": 0
+  },
+  {
+    "index": 10,
+    "name": "Utah Jazz",
+    "abbreviation": "UTA",
+    "roster_type": 0
+  },
+  {
+    "index": 11,
+    "name": "Sacramento Kings",
+    "abbreviation": "SAC",
+    "roster_type": 0
+  },
+  {
+    "index": 12,
+    "name": "New York Knicks",
+    "abbreviation": "NY",
+    "roster_type": 0
+  },
+  {
+    "index": 13,
+    "name": "Los Angeles Lakers",
+    "abbreviation": "LAL",
+    "roster_type": 0
+  },
+  {
+    "index": 14,
+    "name": "Orlando Magic",
+    "abbreviation": "ORL",
+    "roster_type": 0
+  },
+  {
+    "index": 15,
+    "name": "Dallas Mavericks",
+    "abbreviation": "DAL",
+    "roster_type": 0
+  },
+  {
+    "index": 16,
+    "name": "Brooklyn Nets",
+    "abbreviation": "BKN",
+    "roster_type": 0
+  },
+  {
+    "index": 17,
+    "name": "Denver Nuggets",
+    "abbreviation": "DEN",
+    "roster_type": 0
+  },
+  {
+    "index": 18,
+    "name": "Indiana Pacers",
+    "abbreviation": "IND",
+    "roster_type": 0
+  },
+  {
+    "index": 19,
+    "name": "New Orleans Pelicans",
+    "abbreviation": "NO",
+    "roster_type": 0
+  },
+  {
+    "index": 20,
+    "name": "Detroit Pistons",
+    "abbreviation": "DET",
+    "roster_type": 0
+  },
+  {
+    "index": 21,
+    "name": "Toronto Raptors",
+    "abbreviation": "TOR",
+    "roster_type": 0
+  },
+  {
+    "index": 22,
+    "name": "Houston Rockets",
+    "abbreviation": "HOU",
+    "roster_type": 0
+  },
+  {
+    "index": 23,
+    "name": "San Antonio Spurs",
+    "abbreviation": "SA",
+    "roster_type": 0
+  },
+  {
+    "index": 24,
+    "name": "Phoenix Suns",
+    "abbreviation": "PHX",
+    "roster_type": 0
+  },
+  {
+    "index": 25,
+    "name": "Oklahoma City Thunder",
+    "abbreviation": "OKC",
+    "roster_type": 0
+  },
+  {
+    "index": 26,
+    "name": "Minnesota Timberwolves",
+    "abbreviation": "MIN",
+    "roster_type": 0
+  },
+  {
+    "index": 27,
+    "name": "Portland Trail Blazers",
+    "abbreviation": "POR",
+    "roster_type": 0
+  },
+  {
+    "index": 28,
+    "name": "Golden State Warriors",
+    "abbreviation": "GS",
+    "roster_type": 0
+  },
+  {
+    "index": 29,
+    "name": "Washington Wizards",
+    "abbreviation": "WAS",
+    "roster_type": 0
+  }
+]

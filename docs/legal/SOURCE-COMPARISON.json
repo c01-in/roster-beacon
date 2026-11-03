@@ -1,0 +1,191 @@
+{
+  "source_revision": "6cbcedc",
+  "public_python_files": 19,
+  "reference_files": [
+    {
+      "file": "addressing.py",
+      "sha256": "8a2baa19ca99d6ab9537856ea1741c197895aa95aabe12f01603055697741c18"
+    },
+    {
+      "file": "base_scanner_2k27.py",
+      "sha256": "a7f9909bc0f4eb7294d69713e514836561090af2a3622746287fe8957a990d19"
+    },
+    {
+      "file": "conversions.py",
+      "sha256": "5b2cd29169491a8cf7e5a7e2f2b35ce0952e26de1ff610d9257aa2b4170f391b"
+    },
+    {
+      "file": "field_io.py",
+      "sha256": "608f9445ab718e835426d9cc9edd5d3b19c55b4d7f1018834da13ec3f4ac3272"
+    },
+    {
+      "file": "nba2k27_hook.py",
+      "sha256": "981ae69d86b5c48027040d8a7d7cc5221b18bc91bb0e1c24d87529f67db3a97b"
+    },
+    {
+      "file": "offsets.py",
+      "sha256": "09c75eeeddadad895e660aabd1bd321a5f15a0e84ccf81b0f8ff9a3be34c0e33"
+    },
+    {
+      "file": "read_buffer.py",
+      "sha256": "4a7482048e2ca90bb4e7da27d063bc8a3419c43cd427d400b63e705bdd4f04f9"
+    },
+    {
+      "file": "schema.py",
+      "sha256": "0b19436581f4d9379efd6ba8da0c942c54900a2f92b93cb2edbcc0d586c03173"
+    },
+    {
+      "file": "UnpackSave.py",
+      "sha256": "e6866ae03b5b55300c98e6109f1b48179cb40b1805a2a5863c399facffce6a2b"
+    }
+  ],
+  "matching_line_blocks": [
+    {
+      "local": "sync_nba.py",
+      "reference": "base_scanner_2k27.py",
+      "blocks": [
+        {
+          "local_line": 6,
+          "reference_line": 6,
+          "lines": 2,
+          "local_text": [
+            "\"\"\"",
+            "from __future__ import annotations"
+          ]
+        }
+      ]
+    },
+    {
+      "local": "sync_nba.py",
+      "reference": "conversions.py",
+      "blocks": [
+        {
+          "local_line": 6,
+          "reference_line": 6,
+          "lines": 2,
+          "local_text": [
+            "\"\"\"",
+            "from __future__ import annotations"
+          ]
+        }
+      ]
+    },
+    {
+      "local": "sync_nba.py",
+      "reference": "nba2k27_hook.py",
+      "blocks": [
+        {
+          "local_line": 6,
+          "reference_line": 7,
+          "lines": 2,
+          "local_text": [
+            "\"\"\"",
+            "from __future__ import annotations"
+          ]
+        }
+      ]
+    },
+    {
+      "local": "sync_nba.py",
+      "reference": "offsets.py",
+      "blocks": [
+        {
+          "local_line": 6,
+          "reference_line": 8,
+          "lines": 2,
+          "local_text": [
+            "\"\"\"",
+            "from __future__ import annotations"
+          ]
+        }
+      ]
+    },
+    {
+      "local": "save_container.py",
+      "reference": "base_scanner_2k27.py",
+      "blocks": [
+        {
+          "local_line": 6,
+          "reference_line": 6,
+          "lines": 2,
+          "local_text": [
+            "\"\"\"",
+            "from __future__ import annotations"
+          ]
+        }
+      ]
+    },
+    {
+      "local": "save_container.py",
+      "reference": "conversions.py",
+      "blocks": [
+        {
+          "local_line": 6,
+          "reference_line": 6,
+          "lines": 2,
+          "local_text": [
+            "\"\"\"",
+            "from __future__ import annotations"
+          ]
+        }
+      ]
+    },
+    {
+      "local": "save_container.py",
+      "reference": "nba2k27_hook.py",
+      "blocks": [
+        {
+          "local_line": 6,
+          "reference_line": 7,
+          "lines": 2,
+          "local_text": [
+            "\"\"\"",
+            "from __future__ import annotations"
+          ]
+        }
+      ]
+    },
+    {
+      "local": "save_container.py",
+      "reference": "offsets.py",
+      "blocks": [
+        {
+          "local_line": 6,
+          "reference_line": 8,
+          "lines": 2,
+          "local_text": [
+            "\"\"\"",
+            "from __future__ import annotations"
+          ]
+        }
+      ]
+    }
+  ],
+  "identical_nontrivial_functions": [],
+  "injury_metadata": [
+    {
+      "path": "$.Players.Vitals.Health[1].versions.2K27.values",
+      "count": 157,
+      "exact_equal": true,
+      "different_positions": []
+    },
+    {
+      "path": "$.Players.Vitals.Health[3].versions.2K27.values",
+      "count": 157,
+      "exact_equal": true,
+      "different_positions": []
+    }
+  ],
+  "method_limit": "Whitespace-trimmed exact blocks and AST equality are corroborating checks, not proof of independent authorship or a legal finding. No imported application code or upstream code was executed.",
+  "native_enum_verification": {
+    "marker": "PLAYERDATA_INJURY",
+    "marker_offset": 97211197,
+    "executable_bytes": 880513304,
+    "entries_compared": 157,
+    "all_identifiers_and_order_equal": true,
+    "mismatched_indices": [],
+    "identifier_sequence_sha256": "76d62cb38f09866b8a3f9c7860f240bd12b898e921d7a1e6249bad6b5cf971c6",
+    "read_only": true,
+    "game_started": false
+  }
+}
