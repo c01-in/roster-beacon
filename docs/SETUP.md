@@ -35,7 +35,7 @@ Use writable locations on your chosen disk. Baselines/backups belong in persiste
 
 The game must be closed for sync/restore. A Steam launch request is not proof the game reached its menu. The tool leaves Steam Cloud settings unchanged; Steam in-game adoption remains unverified on a Steam installation.
 
-If cloud/game/another tool changes the manifest, inspect the actual current files and re-import a known-good baseline. Keep recovery materials rather than deleting protection records. For missing players use the [roster-pack workflow](ROSTER-DATA.md).
+If cloud/game/another tool changes the roster at the configured save location between runs, the next sync automatically validates the current roster, saves a complete recovery copy and continues. Invalid data, backup failures or another change during synchronization stop the operation. Original recovery baselines remain; manual re-import is optional when deliberately replacing the original baseline. For missing players use the [roster-pack workflow](ROSTER-DATA.md).
 
 **Open logs** exposes `app.log`, `last_sync.json`, `启动状态.txt` and backups. The legacy filename is retained. Logs can include private paths/data. Prefer a reviewed GUI diagnostic export or `Roster-Beacon-cli.exe --diagnose`, which omits absolute paths.
 
