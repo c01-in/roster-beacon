@@ -7,10 +7,10 @@ Update transfers, availability and rotations before you play. One workflow for a
 **NBA 2K27 · Windows 10/11 x64 · Quick play only**  
 Independent utility. Other game editions and platforms are unsupported; Steam discovery/launch are implemented, while Steam in-game adoption remains unverified.
 
-<a href="https://github.com/c01-in/roster-beacon/releases/download/v1.0.0-rc9/Roster-Beacon-1.0.0-rc9-windows-x64-setup.exe"><img src="assets/readme/download-installer.svg" width="236" alt="Download Windows installer"></a>
-<a href="https://github.com/c01-in/roster-beacon/releases/download/v1.0.0-rc9/Roster-Beacon-1.0.0-rc9-windows-x64-portable.zip"><img src="assets/readme/download-portable.svg" width="236" alt="Download portable ZIP"></a>
+<a href="https://github.com/c01-in/roster-beacon/releases/download/v1.0.0-rc10/Roster-Beacon-1.0.0-rc10-windows-x64-setup.exe"><img src="assets/readme/download-installer.svg" width="236" alt="Download Windows installer"></a>
+<a href="https://github.com/c01-in/roster-beacon/releases/download/v1.0.0-rc10/Roster-Beacon-1.0.0-rc10-windows-x64-portable.zip"><img src="assets/readme/download-portable.svg" width="236" alt="Download portable ZIP"></a>
 
-[rc9 release, source & checksums](https://github.com/c01-in/roster-beacon/releases/tag/v1.0.0-rc9) · [Setup guide](docs/SETUP.md) · [Source & usage risks](#data-source-local-requests-and-usage-risks)
+[rc10 release, source & checksums](https://github.com/c01-in/roster-beacon/releases/tag/v1.0.0-rc10) · [Setup guide](docs/SETUP.md) · [Source & usage risks](#data-source-local-requests-and-usage-risks)
 
 <img src="assets/readme/setup-en.png" width="1200" alt="Actual rc8 first-use Settings: choose the game, use its existing roster and save. Internal storage settings stay collapsed.">
 
@@ -51,7 +51,7 @@ The tool uses the game's existing compatible **unencrypted SYNC RDAT v9** data. 
 
 Missing source players can be covered by retained real teammates. If a team has no matches or cannot form a safe lineup, its previous roster can be preserved and related transfers deferred to prevent duplicates. Retained data is reported separately from updates; it remains an older snapshot. Strict mode stops on missing players. Corrupt inputs, unsupported layouts and source failures still stop the operation.
 
-**Quick play only:** MyCareer, MyNBA/franchise/season saves and live in-game editing are unsupported. Advanced manual paths/imports and compatibility settings remain available under **Advanced settings**. To add genuinely missing records, use a compatible local update you are authorized to use and explicitly re-import it. [Details and limitations →](docs/ROSTER-DATA.md)
+**Quick play only:** MyCareer, MyNBA/franchise/season saves and live in-game editing are unsupported. Advanced manual paths/imports and compatibility settings remain available under **Advanced settings**. To add genuinely missing records, use a compatible local update you are authorized to use and the next sync automatically validates and backs it up at the configured save location. [Details and limitations →](docs/ROSTER-DATA.md)
 
 ## Data source, local requests and usage risks
 

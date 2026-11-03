@@ -14,7 +14,7 @@ No particular community download is required. The required input is a compatible
 2. Match real current records to the source. Resolve all team memberships and playable lineups before mutation.
 3. Fill missing slots with available original teammates who have not been allocated to another team. Source players have priority; retained players keep names, identity and original records. Their local position is interpreted through the game's original starting-five roles, without assuming an undocumented numeric position enum.
 4. Preserve a team's entire pre-update roster/lineup/player records when it has zero source matches, no safe five-position lineup, or a membership-capacity conflict. Protect its original players and defer inbound/outbound source moves to prevent duplicate ownership. Replan other affected teams until ownership is consistent.
-5. Report retained players, preserved teams and deferred records. Do not count them as newly updated. Check team/player fingerprints for exact preservation and verify ownership, injuries and lineups on read-back. Recheck the installed manifest before commit; unexpected changes stop the operation.
+5. Report retained players, preserved teams and deferred records. Do not count them as newly updated. Check team/player fingerprints for exact preservation and verify ownership, injuries and lineups on read-back. Recheck the installed manifest before commit; changes during the operation stop the commit.
 
 Retained players used in rebuilt lineups must not be locally marked Out/suspended in either availability slot. Entirely preserved teams keep their previous availability snapshot, not fabricated current health. Strict mode still stops on missing players. Source errors, corrupt inputs and unknown layouts are errors, not successful fallback cases.
 
@@ -23,7 +23,7 @@ Retained players used in rebuilt lineups must not be locally marked Out/suspende
 1. Exit the game normally and retain current SYNC/recovery materials.
 2. Obtain a game-supported compatible update or a roster pack you are authorized to use. Check its actual permission, target version, required assets and installation instructions. “Official” and “free” labels are not redistribution licenses.
 3. Install it using the game/provider/author's supported process. This utility does not install arbitrary ZIPs, EXEs, injectors, portraits or models.
-4. Open **Maintenance → Game roster & fallback → Open settings**. Choose the game and find its existing roster again. Expand **Advanced settings**, select **Re-import the current game roster as a recovery copy**, then **Save & get started**.
+4. At the same configured save location, run the next update normally: validation and a complete pre-update recovery copy are automatic. Advanced re-import remains optional if you deliberately want to replace the original recovery baseline.
 5. Run **Update roster only**, then inspect coverage and **Update & fallback details**.
 
 Import reads the native manifest and referenced roster blob, validates length/hash/container/schema and stores an immutable local baseline. It does not fetch daily information, launch the game or guarantee that every current player is present. Existing backups remain recovery material.
@@ -47,3 +47,7 @@ Public artifacts exclude game rosters, binary patches, faces/models, saves, shar
 ## Partial source depth charts
 
 Default fallback tolerates missing PG/SG/SF/PF/C lists when at least one valid list exists. Missing positions use actual local player positions, mapped through the pre-update starting five, and previous local order; they are not reported as fresh source starters. Source-listed positions keep source ranking. Same-position duplicates retain their first occurrence; membership across positions is valid. If no safe unique five-position lineup exists, preserve the whole team and defer related transfers. Strict mode still rejects missing positions. Invalid players, wrong team/season or an absent/ambiguous whole chart stop the update. Coverage details and logs show fallback and missing positions. Raw exceptional depth responses stay in managed cache files on failure and are deleted after successful commit.
+
+## Automatic adoption after a game or roster patch
+
+At the configured save location, a changed manifest is detected automatically. The current native roster must pass length/hash/container/schema, ownership, lineup and generated read-back checks. Before commit, the app saves both the exact current manifest and its referenced roster blob under `Backups/native/<manifest SHA256>/`, without changing the original recovery baseline or deleting old copies. Synchronization then continues and records adoption and the recovery location in its result. A preview creates no persistent recovery copy. Invalid data, a different installation binding, a running game, backup failure or another manifest change during synchronization still stops the operation. Moving to another save location or incompatible format requires setup again.

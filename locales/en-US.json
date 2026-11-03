@@ -137,7 +137,6 @@
   "游戏正在运行；为避免覆盖已加载数据，本次不更新": "The game is running. Sync was stopped to protect loaded data",
   "游戏已启动，本次不提交更新": "The game has started. This update was not committed",
   "当前数据目录属于另一个游戏存档位置，请为此安装选择独立的数据目录": "This data folder belongs to a different save location. Select a separate data folder for this installation",
-  "本地 SYNC 已被其他程序更新，停止覆盖并保留现有文件": "Another application changed the SYNC manifest. Existing files have been preserved",
   "本地基准名单已改变，请重新导入基准": "The local baseline has changed. Import the baseline again",
   "已安装名单的 MD5 或长度校验失败": "Installed roster MD5 or length verification failed",
   "落盘后的名单 MD5 校验失败": "The written roster failed MD5 verification",
@@ -374,10 +373,13 @@
   "设置完成，可以更新名单或更新并启动游戏": "Setup complete. You can update the roster or update and launch the game.",
   "权利人联系": "Rights contact",
   "权利人联系：维护 → 关于 → 权利人联系。": "Rights-holder contact: Maintenance → About → Rights contact.",
-  "工具直接使用游戏已有名单，无需额外补丁包。选择游戏程序后自动寻找名单；首次保存会自动备份，平时只需点击“仅更新名单”或“更新并启动”。\n\n缺少球员时保留本队真实队员补位，整队无法匹配或无法组成安全首发时保留整队原名单；相关转会暂缓，缺少的球员不会凭空创建。\n\n如果你已在游戏中安装其他有权使用的名单更新，在设置中重新查找，然后展开“高级设置”，勾选“重新读取当前游戏名单并建立恢复备份”，再保存。已有恢复备份继续保留。": "The utility uses existing game rosters without an extra pack. Choose the game executable to find its roster automatically; the first save creates a recovery copy. Then use Update only or Update & launch.\n\nMissing players are covered by existing real teammates; a team without matches or a safe starting five keeps its old roster. Related transfers are deferred; missing players are not fabricated.\n\nAfter installing another roster update you are authorized to use, find the roster again in Settings. Expand Advanced settings, select Re-import the current game roster as a recovery copy, then save. Older recovery copies are retained.",
   "出场顺序球员资料无效，停止更新": "Invalid depth-chart player data; update stopped.",
   "按本地位置与原顺序补全轮换": "Complete rotation using local positions and previous order",
   "来源缺少位置：{positions}": "Source positions missing: {positions}",
   "来源深度表缺少位置，使用本地位置回退；无法安全补全时保留整队": "Source depth chart is missing positions; use local-position fallback, or preserve the whole team if no safe lineup is possible.",
-  "来源同位置重复球员已去重，保留首次出现顺序": "Duplicate players within a source position were removed, preserving first occurrence order."
+  "来源同位置重复球员已去重，保留首次出现顺序": "Duplicate players within a source position were removed, preserving first occurrence order.",
+  "工具直接使用游戏已有名单，无需额外补丁包。选择游戏程序后自动寻找名单；首次保存会自动备份，平时只需点击“仅更新名单”或“更新并启动”。\n\n缺少球员时保留本队真实队员补位，整队无法匹配或无法组成安全首发时保留整队原名单；相关转会暂缓，缺少的球员不会凭空创建。\n\n同一存档位置的名单被游戏或补丁更新后，下次同步会自动校验当前名单、保存完整恢复副本并继续，无需手动重新导入。校验失败或同步期间文件再次变化时停止；原有恢复备份继续保留。更换存档位置或不兼容格式时需要重新设置。": "Use the existing game roster directly; no extra roster pack is required. Select the game, then save to discover and back up its roster. Normally use Update roster only or Update & launch.\n\nMissing players are replaced by real current teammates. Teams with no safe lineup or no matches keep their existing roster, and related transfers are deferred. Missing player records are never fabricated.\n\nWhen the game or a patch changes the roster at the same save location, the next sync automatically validates it, saves a complete recovery copy and continues; no manual re-import is needed. Invalid data or another change during sync stops the operation. Previous recovery copies remain. A different save location or incompatible format requires setup again.",
+  "检测到名单变化，已自动校验并保存恢复副本，继续同步。": "Roster change detected. Automatically validated and saved a recovery copy; continuing sync.",
+  "已有恢复副本与当前名单不符，停止更新": "An existing recovery copy differs from the current roster; update stopped.",
+  "自动恢复副本回读失败，停止更新": "Automatic recovery copy failed read-back verification; update stopped."
 }

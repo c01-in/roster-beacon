@@ -2,6 +2,10 @@
 
 **English** | **[简体中文](docs/zh-CN/CHANGELOG.md)**
 
+## 1.0.0-rc10 — 2026-11-03
+
+Automatically adopt a valid roster changed by a game/patch at the configured save location. Validate and build against the current roster, preserve its complete manifest/blob recovery copy, then commit normally. Keep original recovery baselines and old backups. Invalid/incompatible data, another installation binding, backup failures, a running game or changes during synchronization still stop safely. Manual re-import is optional rather than required for routine patches. Update bilingual in-app guidance.
+
 ## 1.0.0-rc9 — 2026-11-03
 
 Fix updates blocked by partial ESPN depth charts (observed: Denver returned only PF/C). Default fallback fills missing source positions using actual native player positions and the previous starting-five role mapping, preferring previous local order. Transfers and injuries still update for safely planned teams; unsafe teams preserve all existing records and related transfers remain deferred. Same-position duplicates keep their first source occurrence. Wrong team/season, invalid records, absent whole depth charts and strict-mode missing positions still block updates. Bilingual coverage details identify the missing positions and local fallback. Diagnostic source responses remain on failure and clear only after a successful commit.

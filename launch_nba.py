@@ -39,6 +39,8 @@ def run(start_game=True):
                           source_players=result['source_players'], missing=result['missing'],
                           injury_reports=len(result['injuries']), fetched_at=result['fetched_at'],
                           source_warnings=result['source_warnings'],fallback_teams=result.get('fallback_teams',[]),
+                          adopted_current_roster=result.get('adopted_current_roster',False),
+                          pre_update_backup=result.get('pre_update_backup'),
                           preserved_team_count=result.get('preserved_team_count',0),teams_updated=len(result.get('affected_teams',[])))
             print(tr('更新成功：{teams} 队，球员 {players}/{source}，伤病 {injuries} 条。',teams=result['team_count'],players=result['players'],source=result['source_players'],injuries=len(result['injuries'])),flush=True)
             for player in result['missing']:

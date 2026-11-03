@@ -153,8 +153,8 @@ def synchronize(*, refresh=True, install=True):
         if previous_state.get('installation_id', installation_id) != installation_id:
             raise RuntimeError(localize('当前数据目录属于另一个游戏存档位置，请为此安装选择独立的数据目录'))
         allowed.add(previous_state['manifest_sha256'])
-    if hashlib.sha256(current).hexdigest() not in allowed:
-        raise RuntimeError(localize('本地 SYNC 已被其他程序更新，停止覆盖并保留现有文件'))
+    current_checksum = hashlib.sha256(current).hexdigest()
+    adopt_current = current_checksum not in allowed
     installed_source = (BASE/'baseline.json')
     if installed_source.is_file():
         meta = json.loads(installed_source.read_text('utf-8'))
@@ -165,7 +165,7 @@ def synchronize(*, refresh=True, install=True):
     old = (DEST / current_blob).read_bytes()
     if guid(old) != current_blob or len(old) != current_size:
         raise ValueError(localize('已安装名单的 MD5 或长度校验失败'))
-    # The current, recognized installed roster is the fallback anchor. The
+    # The validated current installed roster is the fallback anchor. The
     # immutable import is still validated and retained solely for recovery.
     source_roster()
     current_source=unpack_roster(old)
@@ -175,13 +175,30 @@ def synchronize(*, refresh=True, install=True):
     CACHE_ROOT.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='nba-', dir=CACHE_ROOT) as temporary:
         blob, report = build(snapshot, Path(temporary), current_source)
-    report.update(fallback_source='current_installed_roster',planning_manifest_sha256=hashlib.sha256(current).hexdigest())
+    report.update(fallback_source='current_installed_roster',planning_manifest_sha256=current_checksum,
+                  adopted_current_roster=adopt_current)
     if not install:
         return report
     if game_running():
         raise RuntimeError(localize('游戏已启动，本次不提交更新'))
     if target.read_bytes()!=current:
         raise RuntimeError(localize('规划期间游戏名单被其他程序改动，停止提交'))
+    if adopt_current:
+        # A patch/game/cloud update may legitimately replace the roster between
+        # runs. Build/read-back validation above must succeed before accepting it.
+        # Preserve BOTH the exact input manifest and its blob before committing;
+        # the original recovery baseline and settings remain unchanged.
+        recovery = ROOT / 'Backups' / 'native' / current_checksum
+        for name, payload in ((MANIFEST, current), (current_blob, old)):
+            saved = recovery / name
+            if saved.exists() and saved.read_bytes()!=payload:
+                raise ValueError(localize('已有恢复副本与当前名单不符，停止更新'))
+            if not saved.exists():
+                atomic_write(saved, payload)
+            if saved.read_bytes()!=payload:
+                raise ValueError(localize('自动恢复副本回读失败，停止更新'))
+        report['pre_update_backup'] = str(recovery.relative_to(ROOT))
+        print(tr('检测到名单变化，已自动校验并保存恢复副本，继续同步。'), flush=True)
     lines = []
     for line in current.rstrip(b'\0').decode('utf-8').splitlines():
         if line.rsplit(' ', 2)[0] == ROSTER_PATH:

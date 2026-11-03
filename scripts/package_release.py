@@ -113,7 +113,7 @@ def main():
     (output/'release-manifest.json').write_text(json.dumps(dict(version=VERSION,source_revision=revision,
         artifacts=artifacts,published=False,installed=False,game_started=False,
         rights_review='Scoped implementation provenance documented. Provider and external-game-modification terms remain disclosed considerations; acknowledgement is not third-party permission.',
-        validation='Windows artifacts built; no automated tests added or run. Actual-source copy-only previews included the saved partial Denver depth response; see docs/验证记录.md. No roster installation or game launch; UI interaction and Steam in-game adoption remain unverified.'),ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+        validation='Windows artifacts built; no automated tests added or run. Runtime integrity checks retained. Local installation and update-only execution are recorded separately in release delivery notes. No game launch; UI interaction and Steam in-game adoption remain unverified.'),ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     shutil.copy2(ROOT/'RELEASE_NOTES.md',output/'REVIEW.md')
     print(json.dumps(dict(version=VERSION,artifacts=artifacts),ensure_ascii=False,indent=2))
 
