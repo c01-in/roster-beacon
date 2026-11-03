@@ -1,93 +1,88 @@
-# Roster Beacon
+**English** · **[简体中文](README.zh-CN.md)**
 
-**English** | **[简体中文](README.zh-CN.md)**
+<img src="assets/readme/hero.svg" width="1440" alt="Roster Beacon — Ready before tip-off. Transfers, injuries and rotations for local quick play.">
 
-> **Supported game: NBA 2K27 on Windows 10/11 x64 — quick play only.**
-> Other game editions, consoles and operating systems are unsupported. Steam discovery and launch are implemented; in-game adoption still needs verification on a Steam installation.
+Update transfers, availability and rotations before you play. One workflow for all 30 teams.
 
-Update all 30 teams before playing: transfers, injuries, suspensions, starters and bench order. A failed update blocks game launch. The game can stay disconnected from 2K servers; the computer needs internet access to the configured source.
+**NBA 2K27 · Windows 10/11 x64 · Quick play only**  
+Independent utility. Other game editions and platforms are unsupported; Steam discovery/launch are implemented, while Steam in-game adoption remains unverified.
 
-Current prerelease: **1.0.0-rc8**. [Download Windows installer, portable ZIP and source](https://github.com/c01-in/roster-beacon/releases/tag/v1.0.0-rc8). Read the [usage risks](#data-source-local-requests-and-usage-risks), [third-party notices](THIRD_PARTY_NOTICES.md) and [implementation findings](docs/legal/IMPLEMENTATION-REVIEW.md).
+<a href="https://github.com/c01-in/roster-beacon/releases/download/v1.0.0-rc8/Roster-Beacon-1.0.0-rc8-windows-x64-setup.exe"><img src="assets/readme/download-installer.svg" width="236" alt="Download Windows installer"></a>
+<a href="https://github.com/c01-in/roster-beacon/releases/download/v1.0.0-rc8/Roster-Beacon-1.0.0-rc8-windows-x64-portable.zip"><img src="assets/readme/download-portable.svg" width="236" alt="Download portable ZIP"></a>
 
-## Requirements
+[rc8 release, source & checksums](https://github.com/c01-in/roster-beacon/releases/tag/v1.0.0-rc8) · [Setup guide](docs/SETUP.md) · [Source & usage risks](#data-source-local-requests-and-usage-risks)
 
-- Installed **NBA 2K27 Windows x64** and its actual local SYNC directory.
-- A compatible native baseline: `manifest_*.bin` and its referenced ZIP containing only `roster.RDAT`, in the supported **unencrypted RDAT v9** layout.
-- Permission to use the game, roster data and configured source under their applicable terms.
+<img src="assets/readme/setup-en.png" width="1200" alt="Actual rc8 first-use Settings: choose the game, use its existing roster and save. Internal storage settings stay collapsed.">
 
-**No game files or roster/patch pack are included.** The app updates existing uniquely matched records. It cannot create a missing player, portrait, face, model or animation. No particular community download is required; existing compatible native game data is sufficient, with fallback for missing players.
+<sub>Actual rc8 initial setup. Choose the game; cache, recovery copies and compatibility are managed for you. Personal paths are not shown.</sub>
 
-**No additional roster pack is required to use the tool.** SYNC RDAT v9 names the supported game-data format, not a package to install. Use the game's existing compatible native roster even if some current players are absent. If no readable supported native roster exists at all, the operation stops; it does not create a roster from nothing.
+## From install to tip-off
 
-## Install and configure
+1. **Choose your game.** Install the tool or extract the whole portable ZIP, then find the installed game or choose `NBA2K27.exe`.
+2. **Save & get started.** Existing local rosters are found and checked automatically. If several compatible saves remain, choose yours; the first save creates its recovery copy.
+3. **Update, then play.** Choose **Update only** or **Update & launch**. Read the first-use source notice, then confirm the matchup reminder if enabled.
 
-Use the Windows x64 installer or extract the complete portable ZIP, then run `Roster-Beacon.exe`.
+You do not create a SYNC folder, select a cache path or install an extra roster pack. If no usable roster exists, open the game, reach its main menu, exit and choose **Find again**. The game can remain disconnected from 2K servers; the computer needs internet access to the configured data source.
 
-1. Open **Settings** and choose **Find installed game**, or choose `NBA2K27.exe` with **Choose game**.
-2. The utility searches existing Steam/local save locations and validates native roster data. An unambiguous roster, or the previously configured target, is selected automatically. If several compatible saves remain, choose your current save; last-saved dates help distinguish them.
-3. Choose a reminder team, then **Save & get started**. The utility creates its recovery copy and manages storage automatically.
-4. On the home page, choose **Update only** or **Update & launch**. The first update asks you to read and accept the source/usage notice. If enabled, confirm the reminder team's previous/next games before launch.
+## One workflow. All 30 teams.
 
-**You do not create a SYNC folder or choose internal storage paths.** SYNC is an existing game-data location, not an application folder. If no valid roster is found, open the game with your Windows account, reach the main menu, exit and choose **Find again**. The utility never creates an empty game-data folder and reports it as a roster.
+| On the court | Under the hood |
+| --- | --- |
+| **Transfers and availability** | Update uniquely matched real players, injuries and suspensions across the league. |
+| **Starters and bench order** | Build position-based lineups from the source depth chart; exclude Out/suspended players from newly built active rotations. |
+| **Your next matchup** | See the selected team's previous and next games before launch, with opponents and home/away sides. |
+| **Recovery managed for you** | Back up existing data, check integrity before committing, and block launch when updating fails. Normal settings saves keep the recovery copy. |
 
-Backup/cache locations, manual roster paths, import sources and compatibility profiles are under collapsed **Advanced settings**. Normal settings saves retain the original recovery copy. Explicit re-imports or a changed installation/storage binding establish a new copy while retaining old backups. This does not change the all-team update scope or runtime integrity checks.
+### See what changed — and what stayed unchanged
 
-The installer installs only this utility. It does not install a pack, download the game or start it automatically. Each computer/account needs its own settings.
+<img src="assets/readme/update-en.png" width="1200" alt="Actual saved update summary: 30 of 30 teams, 516 of 521 source players, 92 availability reports; five unmatched players are disclosed.">
 
-## Missing players and compatible packs
+<sub>Detail from a real saved local run on November 2, 2026 (Pacific time). Counts vary with the local roster and source; this is not a live status display.</sub>
 
-The home page shows coverage from the **last successful update**. **Update & fallback details** lists absent/ambiguous source records, retained teammates, preserved teams and deferred source records. Updated counts exclude preserved teams and deferred players. Strict mode still blocks an update with missing players.
+### Pick a matchup before the game opens
 
-Default fallback uses the **recognized roster installed immediately before the update**, not the older recovery baseline. It first updates real matched players, then fills gaps with existing real teammates not assigned elsewhere. Retained players keep their identity and original data, including availability. If no source players match a team, or a safe five-position lineup/capacity cannot be formed, that team's entire existing roster, lineup and player records are preserved. Transfers involving preserved teams are deferred as needed to prevent duplicate ownership; this can require preserving another affected team. Known Out/suspended retained players are excluded from newly built lineups. An unchanged preserved team remains a previous snapshot, not a claim of current availability.
+<img src="assets/readme/matchup-en.png" width="844" alt="Actual schedule-dialog renderer showing a saved Lakers matchup example, with previous and next opponents and Launch game / Cancel actions.">
 
-Input/source corruption and incompatible data still stop the update. Runtime read-back checks verify duplicate-free ownership and exact preservation of protected records.
+<sub>Saved schedule example from the same run, replayed in the actual rc8 dialog. It is not a live fixture feed. Dates/times shown use Pacific time.</sub>
 
-To include new players, obtain a compatible update you are authorized to use, install it through its supported process with the game closed, then re-import the **current actual game SYNC** and sync again. **Maintenance → Game roster & fallback** explains this path. Names-only lists, mappings, portraits and models cannot supply missing player records. Newer data does not establish compatibility or redistribution rights. Read [roster data and missing players](docs/ROSTER-DATA.md).
+## Existing rosters, sensible fallback
 
-## Behavior and recovery
+The tool uses the game's existing compatible **unencrypted SYNC RDAT v9** data. RDAT v9 is a format, not a pack to download. No game files, roster packs, faces, models or player records are bundled or fabricated.
 
-- Assigns five distinct starters by position/depth chart and a bench by depth/position, up to 15 active players. In-game coaching controls substitutions.
-- Excludes Out/suspended players from active rotation; other availability states follow the source.
-- Checks format, layout and written data. Unknown layouts, failed requests and unexpected manifest changes stop the write/launch workflow.
-- Deletes source cache on success; retains failure evidence, baselines and manifest backups.
-- Provides baseline restore and diagnostic export under **Maintenance**. Uninstalling preserves settings/recovery data.
-- Does not support MyCareer, MyNBA/franchise/season saves or live in-game updates.
+Missing source players can be covered by retained real teammates. If a team has no matches or cannot form a safe lineup, its previous roster can be preserved and related transfers deferred to prevent duplicates. Retained data is reported separately from updates; it remains an older snapshot. Strict mode stops on missing players. Corrupt inputs, unsupported layouts and source failures still stop the operation.
 
-The default source is ESPN's publicly reachable endpoint, **not the official 2K daily roster and not an open-data license**. Reachability does not establish permission; provider terms remain an unresolved publication item. No NBA, 2K, Take-Two, Valve or ESPN affiliation is claimed.
+**Quick play only:** MyCareer, MyNBA/franchise/season saves and live in-game editing are unsupported. Advanced manual paths/imports and compatibility settings remain available under **Advanced settings**. To add genuinely missing records, use a compatible local update you are authorized to use and explicitly re-import it. [Details and limitations →](docs/ROSTER-DATA.md)
 
 ## Data source, local requests and usage risks
 
-The default source is **ESPN**, accessed automatically from the user's computer for rosters, injuries, rotations and fixtures. Requests are not routed through a Roster Beacon server. A configured alternative URL is shown in the notice; it must support the expected data schema. This is not an official NBA/2K roster feed.
+The default source is **ESPN**. Automatic roster, injury, rotation and fixture requests go directly from your computer to the configured provider, not through a Roster Beacon server. The notice shows the actual configured URL. This is not an official NBA/2K roster feed; no ESPN, NBA, 2K, Take-Two or Valve affiliation is claimed.
 
-- **Data access:** ESPN's applicable terms restrict automated extraction without express permission; the project has not obtained such permission. [Provider terms](https://disneytermsofuse.com/english/).
-- **Game edits:** Take-Two terms restrict external game modifications and certain related tools, subject to their stated exceptions. Contract disputes, takedown requests or account measures may arise. [Publisher terms](https://www.take2games.com/legal/en-US/).
+- **Data access:** ESPN's applicable terms restrict automated extraction without express permission; the project has not obtained that permission. [Provider terms](https://disneytermsofuse.com/english/).
+- **Game edits:** Take-Two terms restrict external modifications and certain related tools, subject to stated exceptions. Contract disputes, takedown requests or account measures may arise. [Publisher terms](https://www.take2games.com/legal/en-US/).
 
-Before the first data request or roster-changing operation, a modal explains the source, local requests and these risks. The user chooses **I understand — continue** or **Cancel**. Cancellation stops the operation before fetching data, writing the roster or launching the game. Acceptance is stored locally for this configuration, source, compatibility profile and notice revision. Changes to those values require confirmation again. **Maintenance → About → Source & risks** reopens the notice; **Reset confirmation** revokes the saved acknowledgement. Cached-only operations and baseline restores do not fetch data.
+Before the first request or roster-changing operation, choose **I understand — continue** or **Cancel**. Cancellation stops that operation before requests, roster writes or game launch. Confirmation is local and scoped to the configuration, source, profile and notice revision. **Maintenance → About** reopens the notice and resets confirmation. Cached-only operations and baseline restores do not fetch data.
 
-Acknowledgement records the user's voluntary choice; it does not provide permission from ESPN or the publisher. This utility is independent and makes no claim of account safety or third-party approval.
+Acknowledgement records a voluntary choice; it does not supply provider/publisher permission or guarantee account safety. [Implementation and policy findings →](docs/legal/IMPLEMENTATION-REVIEW.md)
 
-## Language, configuration and development
+## Documentation & development
 
-The app follows Windows display language: Chinese for Chinese display languages, English otherwise. The bottom-left selector overrides it while preserving paths, unsaved fields and form position.
+[Setup & recovery](docs/SETUP.md) · [Missing players](docs/ROSTER-DATA.md) · [Documentation index](docs/README.md) · [Release notes](RELEASE_NOTES.md) · [Contributing](CONTRIBUTING.md)
 
-Settings: `%APPDATA%\NBA-Roster-Sync\settings.json`; `NBA_ROSTER_SYNC_CONFIG` selects another file. Language: `auto`, `zh-CN` or `en-US`; `--language` overrides a process. Console options include `--settings`, `--launch`, `--update-only`, `--restore`, `--diagnose` and `--import-baseline`.
+<details>
+<summary>Build from source and advanced configuration</summary>
 
-The legacy configuration directory/environment prefix is retained under the Roster Beacon name so existing settings and recovery materials continue to work.
+Windows, Python 3.12 x64 and `requirements.txt` are required. Run `python app_main.py`. `scripts/build_windows.ps1` uses existing PyInstaller/Inno Setup with explicit cache/output directories. The GitHub build workflow runs only on request and does not publish automatically.
 
-- [Setup and recovery](docs/SETUP.md) · [documentation index](docs/README.md)
-- [Publication plan](docs/PUBLICATION.md) · [name candidates and similar projects](docs/NAME-REVIEW.md)
-- [Contributing](CONTRIBUTING.md) · [security](SECURITY.md) · [release notes](RELEASE_NOTES.md)
+Settings remain in `%APPDATA%\NBA-Roster-Sync\settings.json` for upgrade compatibility; `NBA_ROSTER_SYNC_CONFIG` selects another file. The app follows Windows display language or the bottom-left selector. Console options include `--settings`, `--launch`, `--update-only`, `--restore`, `--diagnose` and `--import-baseline`. See the setup guide for configuration, recovery and format limits.
 
-Source requires Windows, Python 3.12 x64 and `requirements.txt`; run `python app_main.py`. `scripts/build_windows.ps1` uses existing PyInstaller/Inno Setup with explicit cache/output paths. The manual GitHub workflow builds without publishing. Publish from a clean allowlisted export, not the private working repository's history.
+</details>
 
 ## License
 
-[MIT](LICENSE) applies to original contributor-owned code/artwork. It does not license game content, proprietary packs, third-party expression, provider content or trademarks. [Third-party notices](THIRD_PARTY_NOTICES.md) identify dependencies and the documented format-reference provenance. Credit/disclaimers do not grant missing permissions. This candidate has **not** been declared rights-cleared for public distribution.
+[MIT](LICENSE) covers original contributor-owned code and artwork. Runtime components retain their own [licenses and notices](THIRD_PARTY_NOTICES.md). Game content, proprietary packs, provider content and trademarks are outside that grant. Credit and disclaimers do not grant third-party permission. [Screenshot and artwork provenance](assets/readme/README.md).
 
 ## Rights-holder contact and takedown handling
 
-Rights holders and authorized representatives can use the **Rights concern / takedown request** issue form to contact the maintainer. Identify the affected feature, file, URL or release, the rights or terms concerned, and the requested action. Keep confidential evidence and personal details out of public issues.
+[Submit a rights concern / takedown request](https://github.com/c01-in/roster-beacon/issues/new?template=rights_concern.yml), or use **Maintenance → About → Rights contact**. Identify the affected feature, file, URL or release, the relevant rights/terms and requested action. Keep confidential evidence and personal information out of public issues; use [private security reporting](https://github.com/c01-in/roster-beacon/security/advisories/new) for sensitive security reports.
 
-[Submit a rights concern / takedown request](https://github.com/c01-in/roster-beacon/issues/new?template=rights_concern.yml). The same contact route is available from **Maintenance → About → Rights contact**.
-
-On receiving a rights concern, we will prioritize pausing the affected distribution or functionality while reviewing it, and promptly remove, restrict or correct the relevant material as appropriate. This covers releases and downloads we control; it cannot recall copies already downloaded. Cooperating with a takedown request does not grant third-party permission or guarantee immunity from liability.
+We will prioritize pausing affected distribution or functionality, review the request and promptly remove, restrict or correct relevant material as appropriate. This covers releases/downloads we control and cannot recall copies already downloaded. Cooperating with takedown requests does not grant third-party permission or guarantee immunity from liability.

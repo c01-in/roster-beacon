@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="296" height="72" viewBox="0 0 296 72" role="img" aria-labelledby="title description">
+  <title id="title">Download Windows installer</title>
+  <desc id="description">Install Roster Beacon on Windows x64.</desc>
+  <rect x="0.75" y="0.75" width="294.5" height="70.5" rx="12" fill="#CAEF73" stroke="#CAEF73" stroke-width="1.5"/>
+  <path d="M34 21V39M27 32L34 39L41 32M23 43V49H45V43" fill="none" stroke="#121820" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="63" y="33" fill="#121820" font-family="Segoe UI, Arial, sans-serif" font-size="19" font-weight="700">Windows installer</text>
+  <text x="64" y="52" fill="#263343" font-family="Consolas, monospace" font-size="11" letter-spacing="1.4">SETUP .EXE</text>
+</svg>

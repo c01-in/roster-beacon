@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="300" viewBox="0 0 1440 300" role="img" aria-labelledby="title description">
+  <title id="title">Roster Beacon</title>
+  <desc id="description">Ready before tip-off. A dark court-line design for the independent local roster utility.</desc>
+  <defs>
+    <linearGradient id="surface" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#121820"/>
+      <stop offset="1" stop-color="#192632"/>
+    </linearGradient>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#121820"/>
+      <stop offset="0.68" stop-color="#121820" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#B2BFCE" stroke-opacity="0.055" stroke-width="1"/>
+    </pattern>
+    <clipPath id="bounds"><rect x="0.75" y="0.75" width="1438.5" height="298.5" rx="18"/></clipPath>
+  </defs>
+  <g clip-path="url(#bounds)">
+    <rect width="1440" height="300" fill="url(#surface)"/>
+    <rect x="832" width="608" height="300" fill="url(#grid)"/>
+    <g transform="rotate(-14 1260 150)" fill="none" stroke="#70CFCB" stroke-width="2">
+      <path d="M1352-70V370" stroke-opacity="0.4"/>
+      <path d="M1352-40A190 190 0 0 0 1352 340" stroke-opacity="0.22"/>
+      <path d="M1352 93H1253V207H1352" stroke-opacity="0.38" fill="#70CFCB" fill-opacity="0.025"/>
+      <circle cx="1253" cy="150" r="57" stroke-opacity="0.22"/>
+      <path d="M1340 131V169" stroke-opacity="0.65"/>
+      <circle cx="1327" cy="150" r="13" stroke-opacity="0.65"/>
+      <path d="M1352 20H1309M1352 280H1309" stroke-opacity="0.3"/>
+    </g>
+    <circle cx="1060" cy="76" r="4" fill="#CAEF73"/>
+    <circle cx="1060" cy="76" r="12" fill="none" stroke="#CAEF73" stroke-opacity="0.25"/>
+    <path d="M1078 76H1125" stroke="#CAEF73" stroke-opacity="0.4"/>
+    <path d="M959-12L879 312" stroke="#CAEF73" stroke-opacity="0.3"/>
+    <rect x="820" width="200" height="300" fill="url(#fade)"/>
+    <path d="M39 59V226" stroke="#CAEF73" stroke-width="3"/>
+    <text x="64" y="65" fill="#B2BFCE" font-family="Consolas, monospace" font-size="13" letter-spacing="2.6">LOCAL QUICK PLAY</text>
+    <text x="61" y="136" fill="#F0F3F7" font-family="Segoe UI, Arial, sans-serif" font-size="66" font-weight="700" letter-spacing="-2">ROSTER BEACON</text>
+    <text x="64" y="181" fill="#F0F3F7" font-family="Segoe UI, Arial, sans-serif" font-size="26">Ready before tip-off.</text>
+    <text x="65" y="238" fill="#B2BFCE" font-family="Consolas, monospace" font-size="13" letter-spacing="1.5">TRANSFERS <tspan fill="#70CFCB">/</tspan> INJURIES <tspan fill="#70CFCB">/</tspan> ROTATIONS</text>
+    <text x="1080" y="264" fill="#CAEF73" font-family="Consolas, monospace" font-size="15" letter-spacing="2">30 TEAMS</text>
+    <path d="M1407 24H1416V33M1407 276H1416V267" fill="none" stroke="#B2BFCE" stroke-opacity="0.5"/>
+  </g>
+  <rect x="0.75" y="0.75" width="1438.5" height="298.5" rx="18" fill="none" stroke="#354456" stroke-width="1.5"/>
+</svg>
