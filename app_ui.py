@@ -498,7 +498,10 @@ class Application(tk.Tk):
         scrollbar.pack(side='right',fill='y');text.pack(side='left',fill='both',expand=True)
         for player in self.missing_players:text.insert('end',player['name']+'  /  '+player['team']+'\n')
         for fallback in self.fallback_teams:
-            text.insert('end','\n'+fallback['team']+' — '+tr('整队保留原名单' if fallback['mode']=='preserve_team' else '保留原队员补位')+'\n')
+            action={'preserve_team':'整队保留原名单','local_lineup':'按本地位置与原顺序补全轮换'}.get(fallback['mode'],'保留原队员补位')
+            text.insert('end','\n'+fallback['team']+' — '+tr(action)+'\n')
+            if fallback.get('missing_positions'):
+                text.insert('end',tr('来源缺少位置：{positions}',positions=', '.join(p.upper() for p in fallback['missing_positions']))+'\n')
             text.insert('end',', '.join(fallback['retained_players'])+'\n')
         if self.skipped_mapped:
             text.insert('end','\n'+tr('因球队保留而暂缓的来源记录：')+'\n')

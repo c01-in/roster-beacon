@@ -44,7 +44,9 @@ def run(start_game=True):
             for player in result['missing']:
                 print(tr('资料缺少：{player}',player=player['team']+' / '+player['name']),flush=True)
             for fallback in result.get('fallback_teams',[]):
-                action=tr('整队保留原名单' if fallback['mode']=='preserve_team' else '保留原队员补位')
+                action=tr({'preserve_team':'整队保留原名单','local_lineup':'按本地位置与原顺序补全轮换'}.get(fallback['mode'],'保留原队员补位'))
+                if fallback.get('missing_positions'):
+                    action+=' / '+tr('来源缺少位置：{positions}',positions=', '.join(p.upper() for p in fallback['missing_positions']))
                 print(tr('回退提示：{team}，{action}。',team=fallback['team'],action=action),flush=True)
             for warning in result['source_warnings']:
                 print(tr('来源提示：{warning}',warning=warning['name']+' / '+localize(warning['reason'])),flush=True)

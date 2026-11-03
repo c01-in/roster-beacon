@@ -154,7 +154,7 @@ def record_fingerprint(table, index):
 
 
 def depth_lineup(eligible, desired, depth, roster=None, previous_order=()):
-    """Prefer source players; retained teammates use their actual local position."""
+    """Use local roles only for retained teammates or missing source positions."""
     ranks = {p: {a['id']: rank for rank, a in enumerate(depth['positions'][p])} for p in POSITIONS}
     # Five-slot assignment preserves as many available listed starters as possible.
     # Processing each player once prevents a multi-position player taking two slots.
@@ -165,19 +165,23 @@ def depth_lineup(eligible, desired, depth, roster=None, previous_order=()):
         # assume an undocumented numeric PG/SG/SF/PF/C position enum.
         for slot,index in enumerate(previous_order[:5]):
             local_roles[roster.players.get(index,'Position',3)].add(slot)
-    states = {0: ((0, 0, 0), (None,)*5)}
+    missing_positions={p for p in POSITIONS if not depth['positions'][p]}
+    states = {0: ((0, 0, 0, 0), (None,)*5)}
     for index in eligible:
         player=desired.get(index)
         athlete_id = str(player['source_id']) if player else None
-        local_position=roster.players.get(index,'Position',3) if player is None and roster is not None else None
+        local_position=roster.players.get(index,'Position',3) if roster is not None else None
         updated = dict(states)
         for mask, (cost, chosen) in states.items():
             for slot, position in enumerate(POSITIONS):
-                rank = ranks[position].get(athlete_id) if player else (local_rank.get(index,1000) if slot in local_roles[local_position] else None)
+                rank = ranks[position].get(athlete_id) if player else None
+                local_role = rank is None and (player is None or position in missing_positions)
+                if local_role and slot in local_roles[local_position]:
+                    rank = local_rank.get(index,1000)
                 if mask & (1 << slot) or rank is None:
                     continue
                 target = mask | (1 << slot)
-                value = (cost[0]+int(player is None),cost[1]+int(rank!=0),cost[2]+rank)
+                value = (cost[0]+int(player is None),cost[1]+int(local_role),cost[2]+int(rank!=0),cost[3]+rank)
                 if target not in updated or value < updated[target][0]:
                     players = list(chosen)
                     players[slot] = index
@@ -190,7 +194,7 @@ def depth_lineup(eligible, desired, depth, roster=None, previous_order=()):
         if index not in desired:return (1001,local_rank.get(index,1000))
         athlete_id = str(desired[index]['source_id'])
         return min(((ranks[p][athlete_id], slot) for slot, p in enumerate(POSITIONS)
-                    if athlete_id in ranks[p]), default=(1000, 5))
+                    if athlete_id in ranks[p]), default=(1000, local_rank.get(index,1000)))
     bench = sorted((i for i in eligible if i not in starters), key=bench_key)
     return (starters + bench)[:15]
 
@@ -324,7 +328,8 @@ def update_roster(roster, snapshot):
     depths={str(t['team_id']):t.get('depth_chart') for t in snapshot['rosters']}
     for team in plan['teams']:
         depth=depths[team['source_team_id']]
-        if not depth or any(not depth.get('positions',{}).get(p) for p in POSITIONS):
+        if (not depth or not any(depth.get('positions',{}).get(p) for p in POSITIONS)
+                or (not settings['allow_missing_players'] and any(not depth.get('positions',{}).get(p) for p in POSITIONS))):
             raise ValueError(localize(team['team']+' 缺少出场顺序来源，请联网重新更新'))
     desired,groups,lineups,eligible,frozen=plan_team_rosters(
         roster,plan,owner,category,original_groups,source_values,depths,settings['allow_missing_players'])
@@ -375,14 +380,17 @@ def update_roster(roster, snapshot):
             rebuild_lineups(roster,team,eligible[team],pointer,desired,depth,lineup=lineups[team])
         all_members=[i for g in GROUPS for i in groups[team][g]]
         local=[i for i in all_members if i not in desired]
-        if local or team in frozen:
-            fallbacks.append(dict(team=team_plan['team'],team_index=team,mode='preserve_team' if team in frozen else 'retain_teammates',
-                reason=frozen.get(team,'missing_players_or_protected_transfer'),retained_players=[roster.player(i)['name'] for i in local]))
+        missing_positions=[p for p in POSITIONS if not depth['positions'].get(p)]
+        if local or team in frozen or missing_positions:
+            fallbacks.append(dict(team=team_plan['team'],team_index=team,
+                mode='preserve_team' if team in frozen else ('local_lineup' if missing_positions else 'retain_teammates'),
+                reason=frozen.get(team,'source_depth_positions_incomplete' if missing_positions else 'missing_players_or_protected_transfer'),
+                missing_positions=missing_positions,retained_players=[roster.player(i)['name'] for i in local]))
         summaries.append(dict(**team_plan,matched=sum(i in desired for i in all_members),
             missing=[p for p in plan['missing'] if p['team_index']==team],player_indices=all_members,
             preserved=team in frozen,retained_indices=local,active_players=len(lineups[team]),lineup_indices=lineups[team],
             lineup=[desired[i]['source_name'] if i in desired else roster.player(i)['name'] for i in lineups[team]],
-            lineup_source='preserved_local_baseline' if team in frozen else ('source_depth_with_local_fallback' if local else depth['source']),
+            lineup_source='preserved_local_baseline' if team in frozen else ('source_depth_with_local_positions' if missing_positions else ('source_depth_with_local_fallback' if local else depth['source'])),
             lineup_timestamp=None if team in frozen else depth.get('timestamp'),injury_reports=sum(p['team_index']==team for p in injury_log)))
     team_fields={str(i):{field:roster.players.get(i,field,64) for field in ['CurrentTeam_Internal','ContractTeam_Internal']} for i in final_owner}
     result=dict(scope='NBA_ALL_30_TEAMS',team_count=30,source_players=plan['source_players'],players=len(desired),
@@ -391,7 +399,13 @@ def update_roster(roster, snapshot):
         fallback_teams=fallbacks,preserved_team_count=len(frozen),retained_player_count=len(retained),skipped_mapped_players=skipped_mapped,
         source_injury_reports=len(reports),skipped_injury_reports=skipped_reports,fetched_at=snapshot['fetched_at'],
         source_warnings=[dict(source_id=ident,name=r['athlete']['displayName'],status=r['status'],date=r['date'],reason=r['_sync_warning'])
-                         for ident,r in reports.items() if '_sync_warning' in r],source=snapshot['source'],
+                         for ident,r in reports.items() if '_sync_warning' in r]
+            +[dict(source_id=t['team_id'],name=t['team'],status='partial_depth',date=t['depth_chart'].get('timestamp'),
+                   reason='来源深度表缺少位置，使用本地位置回退；无法安全补全时保留整队')
+              for t in snapshot['rosters'] if any(not t['depth_chart']['positions'].get(p) for p in POSITIONS)]
+            +[dict(source_id=t['team_id'],name=t['team'],status='deduplicated_depth',date=t['depth_chart'].get('timestamp'),
+                   reason='来源同位置重复球员已去重，保留首次出现顺序')
+              for t in snapshot['rosters'] if t['depth_chart'].get('deduplicated_positions')],source=snapshot['source'],
         affected_teams=[t for t in range(30) if t not in frozen],preserved_records=preserved,expected_team_fields=team_fields,
         expected_injuries={str(i):v for i,v in expected_injuries.items()},expected_secondary_injuries={str(i):v for i,v in expected_secondary.items()})
     validate_roster(roster,result)

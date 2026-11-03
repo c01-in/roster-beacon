@@ -7,10 +7,10 @@
 **NBA 2K27 · Windows 10/11 x64 · 仅快速比赛**  
 独立第三方工具。其他游戏代际和平台不受支持；已实现 Steam 路径发现与启动，Steam 游戏内采用修改名单仍待对应机器确认。
 
-<a href="https://github.com/c01-in/roster-beacon/releases/download/v1.0.0-rc8/Roster-Beacon-1.0.0-rc8-windows-x64-setup.exe"><img src="assets/readme/download-installer.svg" width="236" alt="下载 Windows 安装包"></a>
-<a href="https://github.com/c01-in/roster-beacon/releases/download/v1.0.0-rc8/Roster-Beacon-1.0.0-rc8-windows-x64-portable.zip"><img src="assets/readme/download-portable.svg" width="236" alt="下载完整便携包"></a>
+<a href="https://github.com/c01-in/roster-beacon/releases/download/v1.0.0-rc9/Roster-Beacon-1.0.0-rc9-windows-x64-setup.exe"><img src="assets/readme/download-installer.svg" width="236" alt="下载 Windows 安装包"></a>
+<a href="https://github.com/c01-in/roster-beacon/releases/download/v1.0.0-rc9/Roster-Beacon-1.0.0-rc9-windows-x64-portable.zip"><img src="assets/readme/download-portable.svg" width="236" alt="下载完整便携包"></a>
 
-[rc8 下载、源码与校验值](https://github.com/c01-in/roster-beacon/releases/tag/v1.0.0-rc8) · [使用说明](docs/安装与部署.md) · [数据来源与使用风险](#数据来源本机请求与使用风险)
+[rc9 下载、源码与校验值](https://github.com/c01-in/roster-beacon/releases/tag/v1.0.0-rc9) · [使用说明](docs/安装与部署.md) · [数据来源与使用风险](#数据来源本机请求与使用风险)
 
 <img src="assets/readme/setup-zh.png" width="1200" alt="rc8 真实首次设置界面：选择游戏、使用已有名单、保存并开始使用，内部存储选项默认折叠。">
 

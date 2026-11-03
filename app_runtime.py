@@ -10,7 +10,7 @@ import sys
 
 APP_NAME = 'Roster Beacon'
 APP_SLUG = 'Roster-Beacon'
-VERSION = '1.0.0-rc8'
+VERSION = '1.0.0-rc9'
 APP_DIR = Path(sys.executable).resolve().parent if getattr(sys, 'frozen', False) else Path(__file__).resolve().parent
 RESOURCES = Path(getattr(sys, '_MEIPASS', Path(__file__).resolve().parent))
 

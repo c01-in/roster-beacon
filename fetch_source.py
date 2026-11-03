@@ -4,6 +4,7 @@ from i18n import localize
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 import json
+import hashlib
 from pathlib import Path
 import urllib.request
 from app_runtime import load_settings, path_setting
@@ -13,6 +14,34 @@ CACHE_ROOT = path_setting(load_settings(), 'cache_directory')
 SNAPSHOT_PATH = CACHE_ROOT / 'espn_snapshot.json'
 BASE = load_settings()['api_base'].rstrip('/')
 POSITIONS = ('pg', 'sg', 'sf', 'pf', 'c')
+
+def normalize_depth(depth, team, expected_year, allow_fallback):
+    name = team['displayName']
+    if depth.get('status') != 'success' or str(depth.get('team', {}).get('id')) != str(team['id']):
+        raise ValueError(localize(f'{name} 出场顺序来源返回失败或球队不符'))
+    if depth.get('season', {}).get('year') != expected_year:
+        raise ValueError(localize(f'{name} 出场顺序不是当前赛季'))
+    charts = depth.get('depthchart') or []
+    if len(charts) != 1 or not isinstance(charts[0].get('positions'), dict):
+        raise ValueError(localize(f'{name} 缺少唯一的球队深度表'))
+    order = {}; duplicates = []
+    for position in POSITIONS:
+        values = charts[0]['positions'].get(position, {}).get('athletes', [])
+        seen = set(); order[position] = []
+        for athlete in values:
+            ident = str(athlete['id'])
+            if not ident.isdecimal() or not isinstance(athlete['displayName'], str) or not athlete['displayName'].strip():
+                raise ValueError(localize('出场顺序球员资料无效，停止更新'))
+            if ident in seen:
+                duplicates.append(position)
+                continue
+            seen.add(ident)
+            order[position].append(dict(id=ident, name=athlete['displayName']))
+    missing = [p for p in POSITIONS if not order[p]]
+    if len(missing) == len(POSITIONS) or (missing and not allow_fallback):
+        raise ValueError(localize(f'{name} 出场顺序缺少位置或同位置球员重复'))
+    return dict(timestamp=depth.get('timestamp'), positions=order,
+                missing_positions=missing, deduplicated_positions=sorted(set(duplicates)))
 
 def get_json(url):
     ensure_usage_consent(url)
@@ -44,21 +73,20 @@ def fetch():
             raise ValueError(localize(f"{team['displayName']} 名单人数异常"))
         depth_url = BASE+'/teams/'+team['id']+'/depthcharts'
         depth = get_json(depth_url)
-        if depth.get('status') != 'success' or str(depth.get('team', {}).get('id')) != str(team['id']):
-            raise ValueError(localize(f"{team['displayName']} 出场顺序来源返回失败或球队不符"))
-        if depth.get('season', {}).get('year') != expected_year:
-            raise ValueError(localize(f"{team['displayName']} 出场顺序不是当前赛季"))
-        charts = depth.get('depthchart') or []
-        if len(charts) != 1:
-            raise ValueError(localize(f"{team['displayName']} 缺少唯一的球队深度表"))
-        positions = charts[0].get('positions', {})
-        order = {p: [dict(id=str(a['id']), name=a['displayName'])
-                     for a in positions.get(p, {}).get('athletes', [])] for p in POSITIONS}
-        if any(not values or len({a['id'] for a in values}) != len(values) for values in order.values()):
-            raise ValueError(localize(f"{team['displayName']} 出场顺序缺少位置或同位置球员重复"))
+        def save_diagnostic():
+            CACHE_ROOT.mkdir(parents=True, exist_ok=True)
+            diagnostic = CACHE_ROOT / ('depth-diagnostic-'+hashlib.sha256(depth_url.encode()).hexdigest()[:16]+'.json')
+            diagnostic.write_text(json.dumps(depth, ensure_ascii=False, indent=2), encoding='utf-8')
+        try:
+            chart = normalize_depth(depth, team, expected_year, settings['allow_missing_players'])
+        except (ValueError, KeyError, TypeError, AttributeError):
+            save_diagnostic()
+            raise
+        if chart['missing_positions'] or chart['deduplicated_positions']:
+            save_diagnostic()
         return dict(source=url,team=team['displayName'],abbreviation=team['abbreviation'],
                     team_id=team['id'],season=data['season'],athletes=athletes,
-                    depth_chart=dict(source=depth_url,timestamp=depth.get('timestamp'),positions=order))
+                    depth_chart=dict(source=depth_url, **chart))
     with ThreadPoolExecutor(max_workers=max(1, min(12, int(settings['network_workers'])))) as pool:
         rosters=list(pool.map(roster, teams))
     ids=[a['id'] for t in rosters for a in t['athletes']]

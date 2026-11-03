@@ -2,6 +2,10 @@
 
 **English** | **[简体中文](docs/zh-CN/CHANGELOG.md)**
 
+## 1.0.0-rc9 — 2026-11-03
+
+Fix updates blocked by partial ESPN depth charts (observed: Denver returned only PF/C). Default fallback fills missing source positions using actual native player positions and the previous starting-five role mapping, preferring previous local order. Transfers and injuries still update for safely planned teams; unsafe teams preserve all existing records and related transfers remain deferred. Same-position duplicates keep their first source occurrence. Wrong team/season, invalid records, absent whole depth charts and strict-mode missing positions still block updates. Bilingual coverage details identify the missing positions and local fallback. Diagnostic source responses remain on failure and clear only after a successful commit.
+
 ## 1.0.0-rc8 — 2026-11-03
 
 Replace the directory-heavy setup with game selection, automatic existing-roster discovery/validation and Save & get started. Steam and manual EXE selection share discovery, with explicit ambiguity handling and readable save timestamps. Internal directories and profile/import controls move into collapsed Advanced settings. Normal preference saves preserve the recovery baseline; changed bindings or explicit re-import create a new recovery copy without deleting old backups. Rights contact is a fixed, clickable About link; no post-publication build or activation flag is required. Discovery was exercised read-only on the owner's existing data; no game, desktop UI or automated application tests were run.

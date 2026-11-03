@@ -214,6 +214,10 @@ def synchronize(*, refresh=True, install=True):
     # Retain source data on every failed update; clear it only after commit.
     try:
         SNAPSHOT_PATH.unlink(missing_ok=True)
+        for diagnostic in CACHE_ROOT.glob('depth-diagnostic-*.json'):
+            suffix=diagnostic.stem.removeprefix('depth-diagnostic-')
+            if len(suffix)==16 and all(c in '0123456789abcdef' for c in suffix) and not diagnostic.is_symlink():
+                diagnostic.unlink()
     except OSError as error:
         print(tr('名单已更新，但来源缓存清理失败：{error}',error=localize(error)), file=sys.stderr)
     return report

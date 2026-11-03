@@ -43,3 +43,7 @@ Home reports the **last successful update**, not the coverage of an unsynced rep
 ## Distribution boundary
 
 Public artifacts exclude game rosters, binary patches, faces/models, saves, share links, extraction codes and credentials. The historical development pack has no verified redistribution grant and is not a public download dependency. Local import and a disclaimer do not settle all contract or copyright questions. See the [rights review](legal/RISK-REVIEW.md).
+
+## Partial source depth charts
+
+Default fallback tolerates missing PG/SG/SF/PF/C lists when at least one valid list exists. Missing positions use actual local player positions, mapped through the pre-update starting five, and previous local order; they are not reported as fresh source starters. Source-listed positions keep source ranking. Same-position duplicates retain their first occurrence; membership across positions is valid. If no safe unique five-position lineup exists, preserve the whole team and defer related transfers. Strict mode still rejects missing positions. Invalid players, wrong team/season or an absent/ambiguous whole chart stop the update. Coverage details and logs show fallback and missing positions. Raw exceptional depth responses stay in managed cache files on failure and are deleted after successful commit.

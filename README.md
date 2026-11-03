@@ -7,10 +7,10 @@ Update transfers, availability and rotations before you play. One workflow for a
 **NBA 2K27 · Windows 10/11 x64 · Quick play only**  
 Independent utility. Other game editions and platforms are unsupported; Steam discovery/launch are implemented, while Steam in-game adoption remains unverified.
 
-<a href="https://github.com/c01-in/roster-beacon/releases/download/v1.0.0-rc8/Roster-Beacon-1.0.0-rc8-windows-x64-setup.exe"><img src="assets/readme/download-installer.svg" width="236" alt="Download Windows installer"></a>
-<a href="https://github.com/c01-in/roster-beacon/releases/download/v1.0.0-rc8/Roster-Beacon-1.0.0-rc8-windows-x64-portable.zip"><img src="assets/readme/download-portable.svg" width="236" alt="Download portable ZIP"></a>
+<a href="https://github.com/c01-in/roster-beacon/releases/download/v1.0.0-rc9/Roster-Beacon-1.0.0-rc9-windows-x64-setup.exe"><img src="assets/readme/download-installer.svg" width="236" alt="Download Windows installer"></a>
+<a href="https://github.com/c01-in/roster-beacon/releases/download/v1.0.0-rc9/Roster-Beacon-1.0.0-rc9-windows-x64-portable.zip"><img src="assets/readme/download-portable.svg" width="236" alt="Download portable ZIP"></a>
 
-[rc8 release, source & checksums](https://github.com/c01-in/roster-beacon/releases/tag/v1.0.0-rc8) · [Setup guide](docs/SETUP.md) · [Source & usage risks](#data-source-local-requests-and-usage-risks)
+[rc9 release, source & checksums](https://github.com/c01-in/roster-beacon/releases/tag/v1.0.0-rc9) · [Setup guide](docs/SETUP.md) · [Source & usage risks](#data-source-local-requests-and-usage-risks)
 
 <img src="assets/readme/setup-en.png" width="1200" alt="Actual rc8 first-use Settings: choose the game, use its existing roster and save. Internal storage settings stay collapsed.">
 

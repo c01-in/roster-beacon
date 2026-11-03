@@ -2,7 +2,7 @@
   #error BuildRoot is required
 #endif
 #ifndef AppVersion
-  #define AppVersion "1.0.0-rc8"
+  #define AppVersion "1.0.0-rc9"
 #endif
 [Setup]
 AppId={{6EBED3CA-6192-471E-9373-1193AE3BD7B9}

@@ -1,42 +1,30 @@
-# 1.0.0-rc8 — Windows prerelease
+# 1.0.0-rc9 — Windows prerelease
 
-**English** | **[简体中文 README](README.zh-CN.md)**
+**English** | **[简体中文更新记录](docs/zh-CN/CHANGELOG.md)**
 
-**NBA 2K27 / Windows 10–11 x64 / quick play only.** Independent utility, not an official roster release. Other game editions/platforms are unsupported. Steam in-game adoption still needs on-device verification.
+**NBA 2K27 / Windows 10–11 x64 / quick play only.** Independent utility. Other game editions/platforms are unsupported; Steam in-game adoption still needs on-device verification.
 
-## Changes
+## Fix
 
-- Normal setup now needs only the game executable, an existing-roster choice when ambiguous, and Save & get started. Storage/profile fields are collapsed under Advanced settings.
-- Automatic discovery validates local roster data, supports Steam/manual EXE selection, retains current bindings and separates new installation storage.
-- Normal preferences preserve the recovery copy; explicit re-import creates a new one and retains older copies.
-- Rights contact uses the final fixed About link. Repository creation/Issues setup is sufficient; the same binary uses its final contact URL without a follow-up activation release.
+ESPN can return only some depth-chart positions. The observed Denver response contained PF/C but no PG/SG/SF; rc8 stopped before reaching its existing missing-player fallback.
 
-- Shared first-use source/risk confirmation before automatic requests or roster writes, with explicit cancellation, locally stored acknowledgement and reset from About.
-- English/Chinese README and About explain ESPN local requests and external-game-modification risks, plus a prepared rights-holder contact and prompt pause/takedown process.
-- Long modal text scrolls within the screen while action buttons remain available. New dialogs have not been exercised in an isolated UI environment.
+- Default fallback now uses actual local positions and previous lineup order for missing source positions, while updating matched transfers and injuries when safe.
+- If no safe five-position lineup can be formed, preserve the whole team and defer related transfers. No fabricated players or starters.
+- Same-position duplicates retain their first occurrence; cross-position entries remain valid.
+- Bilingual fallback details identify missing positions. Wrong team/season, invalid records, absent whole charts and strict-mode missing positions still stop updates and game launch.
+- Exceptional depth responses remain available after failure and clear after successful commit.
 
-- Clarify that RDAT v9 is a format, not a required extra pack. Existing compatible game data can be used with fallback.
-- Fill gaps with real original teammates; preserve entire teams with no matches, unsafe lineups or capacity conflicts. Defer related transfers to prevent duplicates.
-- Plan against the recognized currently installed roster, fingerprint protected records and recheck the manifest before commit. Strict mode and invalid/source data still stop updates.
-- New fallback paths have not been exercised in-game or through desktop UI; this candidate is built without automated tests or changes to the user's roster.
-- Default English README, prominent Chinese switch, English contribution/security/data notices and issue/PR templates.
-- Explicit supported game/platform/mode in README, home, Settings and About.
-- Partial-coverage status with a scrollable unmatched-player list.
-- Authorized local roster update and current-SYNC re-import guide. No pack download, redistribution or player/model creation.
-- Supported unencrypted SYNC parser retained; unused encrypted-save/cipher-key branch removed.
-- Independent rights review and explicit OpenSSL notices. rc4 wheel isolation retained.
+## Artifacts
 
-## Candidate artifacts
-
-- `Roster-Beacon-1.0.0-rc8-windows-x64-setup.exe`
-- `Roster-Beacon-1.0.0-rc8-windows-x64-portable.zip`
-- `Roster-Beacon-1.0.0-rc8-source.zip`
+- `Roster-Beacon-1.0.0-rc9-windows-x64-setup.exe`
+- `Roster-Beacon-1.0.0-rc9-windows-x64-portable.zip`
+- `Roster-Beacon-1.0.0-rc9-source.zip`
 - `SHA256SUMS.txt` and `release-manifest.json`
 
-The installer installs only the utility. Users supply their own compatible local baseline/settings. Artifacts exclude proprietary data, private configs, share credentials and private repository history.
+Install over the existing utility to retain settings. Portable users extract the whole package; retain their local settings separately. The utility never supplies proprietary rosters or new player assets.
+
+No automated tests or game launch were performed. Copy-only builds succeeded for the current 30-team feed and a diagnostic replay of the saved partial Denver reply (516/521 matched players). The replay combines two source times and was never installed. The existing modified-manifest guard correctly blocked installation against changed local state; re-import the current roster through Advanced settings when that guard applies. See [validation record](docs/验证记录.md). Native file integrity checks remain enabled. UI interaction and in-game adoption remain for user verification.
 
 ## Distribution and notices
 
-Public source: [c01-in/roster-beacon](https://github.com/c01-in/roster-beacon). This prerelease includes the accepted Windows build and accompanying source, checksums and license notices. Local settings, consent records, game files, fetched datasets, diagnostic logs and private Git history are excluded.
-
-The source/provider and game-modification considerations remain disclosed in README/About and the first-use notice; publication does not claim provider permission or legal clearance. Rights holders can use the repository's Rights concern issue form. Binaries are unsigned; Steam in-game adoption and a fully isolated UI walkthrough remain outside the recorded agent validation. The manual GitHub workflow builds only when requested and does not publish automatically.
+Source: [c01-in/roster-beacon](https://github.com/c01-in/roster-beacon). Archives exclude private settings, game data, fetched datasets, diagnostic logs and private history. Original-code MIT licensing and bundled runtime notices remain included. Provider and game-modification disclosures remain in README/About and first-use notice; rights holders can use the repository's Rights concern form. Binaries are unsigned.
