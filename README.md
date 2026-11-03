@@ -7,7 +7,7 @@
 
 Update all 30 teams before playing: transfers, injuries, suspensions, starters and bench order. A failed update blocks game launch. The game can stay disconnected from 2K servers; the computer needs internet access to the configured source.
 
-Current local candidate: **1.0.0-rc8**. No public repository or release has been created. This candidate includes first-use acknowledgement and rights-holder contact/takedown guidance. See [publication status](docs/PUBLICATION.md) and the [implementation and policy findings](docs/legal/IMPLEMENTATION-REVIEW.md).
+Current prerelease: **1.0.0-rc8**. [Download Windows installer, portable ZIP and source](https://github.com/c01-in/roster-beacon/releases/tag/v1.0.0-rc8). Read the [usage risks](#data-source-local-requests-and-usage-risks), [third-party notices](THIRD_PARTY_NOTICES.md) and [implementation findings](docs/legal/IMPLEMENTATION-REVIEW.md).
 
 ## Requirements
 

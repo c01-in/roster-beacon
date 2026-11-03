@@ -7,7 +7,7 @@
 
 启动前更新全部 30 队的转会、伤病、停赛、首发和替补顺序，失败则阻止启动。游戏可以不连接 2K 服务器，电脑需要联网获取配置的数据来源。
 
-当前本地候选：**1.0.0-rc8**。尚未创建公开仓库或发布 release。本版加入首次使用确认、权利人联系和下架处理说明。见[发布计划](docs/PUBLICATION.md)和[实际实现与条款核查](docs/legal/IMPLEMENTATION-REVIEW.md)。
+当前预发布版本：**1.0.0-rc8**。[下载 Windows 安装包、便携包与源码](https://github.com/c01-in/roster-beacon/releases/tag/v1.0.0-rc8)。使用前请阅读下方的数据来源与使用风险、[第三方说明](docs/zh-CN/THIRD_PARTY_NOTICES.md)及[实际实现核查](docs/legal/IMPLEMENTATION-REVIEW.md)。
 
 ## 前提和安装
 

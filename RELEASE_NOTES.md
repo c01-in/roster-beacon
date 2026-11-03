@@ -1,4 +1,4 @@
-# 1.0.0-rc8 — local publication-preparation candidate
+# 1.0.0-rc8 — Windows prerelease
 
 **English** | **[简体中文 README](README.zh-CN.md)**
 
@@ -35,8 +35,8 @@
 
 The installer installs only the utility. Users supply their own compatible local baseline/settings. Artifacts exclude proprietary data, private configs, share credentials and private repository history.
 
-## Publication position
+## Distribution and notices
 
-The owner selected Roster Beacon and chose to hold publication until rights issues are addressed. No public repository, tag or release has been created. Source provenance, provider access and remaining game-format rights questions are documented in `docs/legal/RISK-REVIEW.md`; this candidate is not represented as rights-cleared. Use the clean export after the name and release position are decided. Builds preserve the installed app/game.
+Public source: [c01-in/roster-beacon](https://github.com/c01-in/roster-beacon). This prerelease includes the accepted Windows build and accompanying source, checksums and license notices. Local settings, consent records, game files, fetched datasets, diagnostic logs and private Git history are excluded.
 
-The manual GitHub workflow builds without publishing. Future release metadata should preserve the real support scope and dependency notices. Binaries are currently unsigned.
+The source/provider and game-modification considerations remain disclosed in README/About and the first-use notice; publication does not claim provider permission or legal clearance. Rights holders can use the repository's Rights concern issue form. Binaries are unsigned; Steam in-game adoption and a fully isolated UI walkthrough remain outside the recorded agent validation. The manual GitHub workflow builds only when requested and does not publish automatically.

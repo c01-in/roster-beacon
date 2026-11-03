@@ -9,7 +9,7 @@ body:
     id: version
     attributes:
       label: Utility version
-      placeholder: 1.0.0-rc5
+      placeholder: 1.0.0-rc8
     validations:
       required: true
   - type: dropdown

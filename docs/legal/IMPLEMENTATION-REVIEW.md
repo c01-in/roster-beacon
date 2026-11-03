@@ -1,6 +1,6 @@
 # Implementation and modding-policy findings
 
-Reviewed on **2026-11-02**, against application revision `6cbcedc`. This records concrete source and policy findings. It is not a ruling on infringement or a guarantee of legal clearance. The earlier publication hold was the owner's instruction; it is not a legal prohibition imposed by the assistant.
+Reviewed on **2026-11-02**, against application revision `6cbcedc`. This records concrete source and policy findings. It is not a ruling on infringement or a guarantee of legal clearance. The findings distinguish implementation provenance, service terms and legal conclusions.
 
 ## Code and compatibility data
 

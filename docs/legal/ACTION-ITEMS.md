@@ -1,6 +1,6 @@
-# Before public distribution
+# Rights and maintenance status
 
-**Roster Beacon publication is on hold at the owner's request.** The review does not establish infringement, clearance or a legal opinion. Track the actual rights basis instead of relying on acknowledgements or a disclaimer.
+**The maintainer approved publication of the reviewed rc8 candidate.** The review does not establish infringement, clearance or a legal opinion. The disclosed provider/game-modification considerations remain; keep permissions and provenance accurate.
 
 | Item | What would resolve it | Current position |
 | --- | --- | --- |
@@ -23,4 +23,4 @@ The scoped follow-up records the pinned sources and actual common metadata. It f
 
 Describe the actual on-demand roster, injury, depth-chart and schedule retrieval; the intended free/public client distribution; local caching/deletion; and whether results are redistributed. Obtain terms covering access method, rate, caching, display, attribution and geographic limits. The current configurable base URL expects the existing source schema; switching providers can require a genuine adapter, not only a URL change. No provider permission has been obtained or request sent.
 
-Do not upload proprietary game/roster files to public issues to resolve these questions. Keep permissions with their actual scope, version/date and granting party. Resume repository/release publication only when the owner decides these items have been addressed.
+Do not upload proprietary game/roster files to public issues to resolve these questions. Keep permissions with their actual scope, version/date and granting party. Use the documented rights-contact, private security-reporting and prompt pause/takedown processes for concerns raised after publication.

@@ -11,3 +11,5 @@
 使用者提供自己的原生名单文件；程序验证清单、长度、MD5、容器节点及布局后修改目标。对未知格式与外部更改停止写入。不要从不可信来源导入兼容档案或名单。
 
 本版本不运行后台更新服务或远程下载可执行代码，未配置自动发布或自动升级。
+
+敏感安全问题请通过 [GitHub 私密漏洞报告](https://github.com/c01-in/roster-beacon/security/advisories/new)提交。非机密的权利或下架问题可用 [Rights concern 表单](https://github.com/c01-in/roster-beacon/issues/new?template=rights_concern.yml)。公开 issue 请勿包含个人信息、凭据或游戏文件。

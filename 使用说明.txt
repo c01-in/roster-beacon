@@ -9,4 +9,4 @@ Steam 自动查找与手动选择 EXE 都会探测已有名单；多个候选显
 更新全部 30 队的转会、伤病、停赛及出场顺序；默认弹出置顶赛程确认，点确定才启动游戏。
 更新失败停止启动；成功清理来源缓存，失败保留排查。恢复入口保留个人存档。
 无需额外补丁包：SYNC RDAT v9 是游戏原生名单格式。缺员时以更新前本队真实队员补位；整队无法匹配或无法安全组成阵容时保留原队，相关转会暂缓。不会凭空创建球员。Steam 游戏内效果待实机确认。
-当前为本地 review 版本，尚未创建远程仓库或发布 release。详情见 README.md 与 RELEASE_NOTES.md。
+当前为 Windows 预发布版本。仓库与下载：https://github.com/c01-in/roster-beacon 。详情见 README.md 与 RELEASE_NOTES.md。

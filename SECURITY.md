@@ -8,4 +8,4 @@ It reads/writes selected roster data and stores recovery materials locally. HTTP
 
 Settings/logs may expose private details. Diagnostic export omits absolute paths, but inspect any file before sharing. Do not attach game files, packs, saves, account identifiers or extraction credentials to public issues.
 
-A repository/private security-reporting channel has not been configured yet. Until then, use a maintainer-provided private channel for sensitive reports instead of posting private data or exploit details publicly. This is not an account-safety guarantee. Separate provider/legal questions are covered in the [rights review](docs/legal/RISK-REVIEW.md).
+Use GitHub's [private vulnerability reporting](https://github.com/c01-in/roster-beacon/security/advisories/new) for sensitive security reports. Use the [Rights concern form](https://github.com/c01-in/roster-beacon/issues/new?template=rights_concern.yml) for non-confidential rights/takedown requests. Keep personal details, secrets and game files out of public issues. This is not an account-safety guarantee. Separate provider/legal questions are covered in the [rights review](docs/legal/RISK-REVIEW.md).
